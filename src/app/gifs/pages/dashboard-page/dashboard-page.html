@@ -1,12 +1,27 @@
-
 <div class="bg-slate-100 overflow-y-scroll w-screen h-screen antialiased text-slate-300 selection:bg-blue-600 selection:text-white">
-    <div class="flex flex-col relative w-screen">
 
-      <gifs-side-menu />
+  <!-- 🔹 HEADER solo visible en móvil -->
+  <header class="flex items-center justify-between bg-gray-900 text-white p-4 md:hidden">
+    <h1 class="font-bold text-lg">GifsApp</h1>
+    <button (click)="toggleMenu()">
+      <i class="fa-solid fa-bars text-2xl"></i>
+    </button>
+  </header>
 
-        <div class="ml-[220px] px-4 flex  flex-col flex-1  h-full text-slate-800">
-          <router-outlet />
-        </div>
+  <!-- 🔹 Overlay (fondo oscuro al abrir menú en móvil) -->
+  <div
+    id="overlay"
+    class="fixed inset-0 bg-black/50 z-5 hidden md:hidden"
+    (click)="toggleMenu()"
+  ></div>
 
+  <div class="flex flex-col md:flex-row relative w-screen h-full">
+    <!-- 🔸 Menú lateral -->
+    <gifs-side-menu></gifs-side-menu>
+
+    <!-- 🔸 Contenido principal -->
+    <div class="flex-1 px-4 flex flex-col h-full text-slate-800 md:ml-[220px] transition-all duration-300">
+      <router-outlet></router-outlet>
     </div>
+  </div>
 </div>

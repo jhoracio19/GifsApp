@@ -7,4 +7,14 @@ import { SideMenu } from '../../components/side-menu/side-menu';
   imports: [RouterOutlet, SideMenu ],
   templateUrl: './dashboard-page.html',
 })
-export default class DashboardPage { }
+export default class DashboardPage {
+    toggleMenu() {
+    const menu = document.getElementById('menu');
+    const overlay = document.getElementById('overlay');
+
+    if (menu) {
+      const isHidden = menu.classList.toggle('-translate-x-full');
+      if (overlay) overlay.classList.toggle('hidden', isHidden);
+    }
+  }
+}
